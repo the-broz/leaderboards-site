@@ -1,0 +1,133 @@
+<!-- GAME PAGE FOR: TETRYS !-->
+<head>
+          <link href="/static/css/gamepage.css" rel="stylesheet" type="text/css" />
+          <title class="title">Tetrys - Pauseless Leaderboard</title>
+          </head>
+<body>
+          <script src="https://kit.fontawesome.com/a1f883f737.js" crossorigin="anonymous"></script>
+          <div class="topnav">
+          <a href="/">Home</a>  
+        <a href="signup">Signup</a>  
+        <a href="https://forms.gle/zCXXvJF8WtBic1cJA"><span><i class="fa-solid fa-plus"></i></span> Submit Score</a>  
+                    <a class="leftside">Signup</a>
+</div>
+          
+          <div class="leaderboard">
+                    <div class="catergories">
+                              <button class="active">Pauseless</button>
+                              <!--<button class="inactive">Pauses</button>!-->
+                              </div>
+                    <h1 style="color: white;">Tetrys</h1>
+                    <div class="mods"><p class="moderators" style="color: white;">Leaderboard Moderator(s):</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> thebroz</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> NoahBigDaddy4</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Enzo</p></div>
+                    
+                    <button class="submit" onclick="location.href='https://forms.gle/zCXXvJF8WtBic1cJA';"><span><i class="fa-solid fa-plus"></i></span> Submit Score</button>
+                    <div class="placements">
+                              </div>
+                    <p class="extra">It may take up to 7 days for your score to be reviewed and approved. Board updates every 10s.</p>
+          </div>
+           <script type="module">
+                     function addCommas(nStr)
+{
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+                     
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
+                     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCQEOWjysLQNGwDemk-jp4k3cWdAuitHZw",
+    authDomain: "leaderboards-site.firebaseapp.com",
+    databaseURL: "https://leaderboards-site-default-rtdb.firebaseio.com",
+    projectId: "leaderboards-site",
+    storageBucket: "leaderboards-site.appspot.com",
+    messagingSenderId: "943539476503",
+    appId: "1:943539476503:web:82e4398689311b3fec2452",
+    measurementId: "G-D16RW8RJYM"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+                     const database = getDatabase();
+                     function updateBoard(){
+                               document.getElementsByClassName('placements')[0].innerHTML = "";
+                     const starCountRef = ref(database, 'games/' + 'tetrys' + '/pauseless');
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+           document.getElementsByClassName('placements')[0].innerHTML = "";
+     let sortable = [];
+for (var score in data) {
+    sortable.push([score, data[score]]);
+}
+
+sortable.sort(function(a, b) {
+    return a[1] - b[1];
+});
+          sortable.reverse();
+console.log(sortable);
+          for (var i=0; i < sortable.length; i++){
+                    var done = false;
+                    console.log("working on: "+i)
+          const newScore = document.createElement("p");
+                    if (i + 1 == 1){
+                              newScore.innerHTML = "[<span class=\"first\">1st</span>] "+sortable[i][0]+" - "+sortable[i][1]+" pts"
+                              console.log("is first!");
+                               newScore.className = "placement"
+                              done = true;
+                               document.getElementsByClassName("placements")[0].appendChild(newScore);
+                             
+                    }
+                    if (i + 1 == 2){
+                              newScore.innerHTML = "[<span class=\"sec\">2nd</span>] "+sortable[i][0]+" - "+sortable[i][1]+" pts"
+                              console.log("is sec!");
+                               newScore.className = "placement"
+                              done = true;
+                              
+                               document.getElementsByClassName("placements")[0].appendChild(newScore);
+                              
+                    }
+                    if (i + 1 == 3){
+                              newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+sortable[i][1]+" pts"
+                              console.log("is third!");
+                               newScore.className = "placement"
+                              done = true;
+                               document.getElementsByClassName("placements")[0].appendChild(newScore);
+                              
+                    }
+                   if (done === false){
+                             done = true;
+                              newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i][0]+" - "+sortable[i][1]+" pts"
+                    newScore.className = "placement"
+                    console.log("not first or second or third!");
+                   document.getElementsByClassName("placements")[0].appendChild(newScore);
+                    
+                   }
+                    
+                    
+          }
+          
+});
+                     }
+updateBoard();
+setInterval(function(){
+updateBoard();
+},10000);
+                     
+</script>         
+</body>

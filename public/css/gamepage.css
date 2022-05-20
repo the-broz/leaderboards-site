@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap');
+                    html, body { background-color: #4aa644; font-family: 'Work Sans', sans-serif;}
+                                        .topnav {
+  background-color: #3d8a37;
+  overflow: hidden;
+                              width: 102%;
+                              position: relative;
+                              top: -12px;
+left: -7px;
+                                                
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+                    
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #59cc50;
+  color: white;
+}
+        
+                    .topnav a.leftside {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+                              float: right;
+}
+                    .topnav a.leftsideactive {
+  background-color: #59cc50;
+  color: white;
+}
+                    
+                    .mod {
+                    width: 19px;
+                              height: 18px;
+                             margin-top: 2px;
+                              margin-bottom: .5px;
+                    }
+                    .first {
+                              
+                    color: #d6af11;
+                    }
+                    .sec {
+                    color: #9c9b9a;
+                    }
+                    .third {
+                    color: #543105;
+                    }
+                    .leaderboard {
+                              border-radius: 5px;
+                    align-items: center;
+                               margin-top: 3%;
+                              margin-right: auto; margin-left: auto; width: 1200px; height: 500px;
+                              background-color:#388732
+                                        
+                    }
+                    .placements {
+                              width: 100%;
+                              height: 201px;
+                    overflow-y: auto;
+                    }
+                    .placement {
+                    background-color: #255721;
+                              height: 25px;
+                              text-align: left;
+                              vertical-align: center;
+                              border-radius: 3px;
+                              margin-top: 3px;
+                              margin-bottom: 10px;
+                              color: white;
+                    }
+                    .extra {
+                    font-size: 9px;
+                              float: bottom;
+                              position: absolute;
+  bottom: -12;
+                              
+                    }
+                   
+                    button {
+                              z-index: 1000;
+                              margin-bottom: 10px;
+                              width: 105px;
+                              height: 30px;
+                              background-color: #255721;
+                              color: white;
+                              border: none;
+                              border-radius: 10px;
+                              font-family:'Work Sans', sans-serif;
+                              cursor: pointer;
+                    }
+                    button.active {
+                              z-index: 1000;
+                              margin-bottom: 10px;
+                              width: 105px;
+                              height: 30px;
+                              background-color: #59cc50;
+                              color: white;
+                              border: none;
+                              border-radius: 10px;
+                              font-family:'Work Sans', sans-serif;
+                              cursor: pointer;
+                    }
+                    .submit {
+                              margin-top: auto;
+                    position: absolute;
+                              float:left;
+                                        right: 70;
+                              top: 105;
+                              width: 115px;
+                              height: 40px;
+                              background-color: #255721;
+                              color: white;
+                              border: none;
+                              border-radius: 10px;
+                              font-family:'Work Sans', sans-serif;
+                              cursor: pointer;
+                    }
+                    
+                    .inactive:hover {
+                    animation: hover;
+                              animation-duration: 1s;
+                              background-color: #59cc50;
+                              
+                    }
+                    
+                    .submit:hover {
+                    animation: hover;
+                              animation-duration: 1s;
+                              background-color: #59cc50;
+                              
+                    }
+                    .mods {
+                              z-index: 1;
+                    margin-bottom: 10px;
+                              background-color: #255721;
+                    }
+                    @keyframes hover {
+                              0% {
+                              background-color: #255721;
+                              }
+                              
+                              100% {
+                              background-color: #59cc50;
+                              }
+                    }

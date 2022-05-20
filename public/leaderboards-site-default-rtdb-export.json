@@ -1,0 +1,50 @@
+{
+  "games": {
+    "snake": {
+    "extension": {
+      "captaincoolman444": 30,
+      "thebroz": 19
+      }
+      
+    },
+    "tetrys": {
+    "pauseless": {
+      "Ethan": 51142,
+      "Greg": 25317,
+      "Mike": 60150,
+      "NoahBigDaddy4": 28501,
+      "Rafaela": 16397,
+      "captaincoolman444": 20158,
+      "thebroz": 4033
+      }
+    },
+    "tunnel": {
+    "normal": {
+      "Greg": 37.31,
+      "Jack": 62.67,
+      "thebroz": 39.94
+      },
+      "turbine": {
+      "Nobody": 0
+      },
+      "chaos": {
+      "Nobody": 0
+      }
+    }
+  },
+  "moderators": {
+    "snake": {
+      "captaincoolman444": "supermod",
+      "thebroz": "supermod"
+    },
+    "tetrys": {
+      "NoahBigDaddy4": "supermod",
+      "thebroz": "supermod"
+    },
+    "tunnel": {
+      "Greg": "supermod",
+      "Jack": "supermod",
+      "thebroz": "supermod"
+    }
+  }
+}
