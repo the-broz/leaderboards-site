@@ -20,6 +20,12 @@ app.get('/game/tetrys', (req, res) => {
   res.sendFile(__dirname + '/tetrys.html');
 });
 
+app.get('/sumbit?game=:game', (req, res) => {     
+           var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+          console.log('[GET] Sumbit Page\nIP:'+ip+'\nGAME: '+req.params.game);
+  res.sendFile(__dirname + '/tetrys.html');
+});
+
 app.get('/game/snake', (req, res) => { 
            var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
           console.log('[GET] Snake\nIP:'+ip);

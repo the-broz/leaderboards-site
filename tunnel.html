@@ -89,7 +89,7 @@ console.log(sortable);
                     console.log("working on: "+i)
           const newScore = document.createElement("p");
                     if (i + 1 == 1){
-                              newScore.innerHTML = "[<span class=\"first\">1st</span>] "+sortable[i][0]+" - "+sortable[i][1]+" km"
+                              newScore.innerHTML = "[<span class=\"first\">1st</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
                               console.log("is first!");
                                newScore.className = "placement"
                               done = true;
@@ -97,7 +97,7 @@ console.log(sortable);
                              
                     }
                     if (i + 1 == 2){
-                              newScore.innerHTML = "[<span class=\"sec\">2nd</span>] "+sortable[i][0]+" - "+sortable[i][1]+" km"
+                              newScore.innerHTML = "[<span class=\"sec\">2nd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
                               console.log("is sec!");
                                newScore.className = "placement"
                               done = true;
@@ -106,7 +106,7 @@ console.log(sortable);
                               
                     }
                     if (i + 1 == 3){
-                              newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+sortable[i][1]+" km"
+                              newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
                               console.log("is third!");
                                newScore.className = "placement"
                               done = true;
@@ -115,7 +115,7 @@ console.log(sortable);
                     }
                    if (done === false){
                              done = true;
-                              newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i][0]+" - "+sortable[i][1]+" km"
+                              newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
                     newScore.className = "placement"
                     console.log("not first or second or third!");
                    document.getElementsByClassName("placements")[0].appendChild(newScore);
