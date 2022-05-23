@@ -47,7 +47,7 @@ app.get('/v2/game/:game', (req, res) => {
  res.send(req.params)
 });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, () => {
           
-  console.log('static + normal server now listening on *:3000');
+  console.log('static + normal server now listening on *:'+(process.env.PORT || 3000));
 });
