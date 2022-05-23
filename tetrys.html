@@ -18,7 +18,7 @@
                               <!--<button class="inactive">Pauses</button>!-->
                               </div>
                     <h1 style="color: white;">Tetrys</h1>
-                    <div class="mods"><p class="moderators" style="color: white;">Leaderboard Moderator(s):</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> thebroz</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Noah</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Enzo</p></div>
+                    <div class="mods"><p class="moderators" style="color: white;">Leaderboard Moderator(s):</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Sean</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Noah</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Enzo</p></div>
                     
                     <button class="submit" onclick="location.href='https://forms.gle/zCXXvJF8WtBic1cJA';"><span><i class="fa-solid fa-plus"></i></span> Submit Score</button>
                     <div class="placements">
@@ -26,6 +26,7 @@
                     <p class="extra">It may take up to 7 days for your score to be reviewed and approved. Board updates every 10s.</p>
           </div>
            <script type="module">
+                     var CAT = "pauseless"
                      function addCommas(nStr)
 {
     nStr += '';
@@ -67,7 +68,7 @@
                      const database = getDatabase();
                      function updateBoard(){
                                document.getElementsByClassName('placements')[0].innerHTML = "";
-                     const starCountRef = ref(database, 'games/' + 'tetrys' + '/pauseless');
+                     const starCountRef = ref(database, 'games/' + 'tetrys' + '/' + CAT);
 onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
            document.getElementsByClassName('placements')[0].innerHTML = "";
@@ -112,7 +113,11 @@ console.log(sortable);
                     }
                    if (done === false){
                              done = true;
+                             if (sortable[i][1] < 0) {
+                                       newScore.innerHTML = "<span class=\"other\">[REMOVED]</span> "+sortable[i][0]+" - SCORE REMOVED"
+                             }else{
                               newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" pts"
+                             }
                     newScore.className = "placement"
                     console.log("not first or second or third!");
                    document.getElementsByClassName("placements")[0].appendChild(newScore);
@@ -124,6 +129,8 @@ console.log(sortable);
           
 });
                      }
+                     var ELEMENT1 = document.getElementsByClassName("")
+                     
 updateBoard();
 setInterval(function(){
 updateBoard();
