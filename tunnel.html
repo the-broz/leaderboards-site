@@ -13,8 +13,9 @@
           
           <div class="leaderboard">
                     <div class="catergories">
-                              <!--<button class="active">Pauseless</button>!-->
-                              <!--<button class="inactive">Pauses</button>!-->
+                              <button id="normal" class="active">Normal</button>
+                              <button id="turbine" class="inactive">Turbine</button>
+                              <button id="chaos" class="inactive">Chaos</button>
                               </div>
                     <h1 style="color: white;">Tunnel Glider</h1>
                     <div class="mods"><p class="moderators" style="color: white;">Leaderboard Moderator(s):</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> thebroz</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Greg</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Jack</p>
@@ -27,7 +28,9 @@
                    
                     <p class="extra">It may take up to 7 days for your score to be reviewed and approved. Updates every 10s.</p>
           </div>
-              <script type="module">
+               <script type="module">
+                     var CAT = "normal"
+                     var oldData = [];
                      function addCommas(nStr)
 {
     nStr += '';
@@ -69,11 +72,10 @@
                      const database = getDatabase();
                      function updateBoard(){
                                document.getElementsByClassName('placements')[0].innerHTML = "";
-                     const starCountRef = ref(database, 'games/' + 'tunnel' + '/normal');
+                     const starCountRef = ref(database, 'games/' + 'tunnel' + '/' + CAT);
 onValue(starCountRef, (snapshot) => {
-   document.getElementsByClassName('placements')[0].innerHTML = "";
-          const data = snapshot.val();
-          
+  const data = snapshot.val();
+           document.getElementsByClassName('placements')[0].innerHTML = "";
      let sortable = [];
 for (var score in data) {
     sortable.push([score, data[score]]);
@@ -84,6 +86,23 @@ sortable.sort(function(a, b) {
 });
           sortable.reverse();
 console.log(sortable);
+          if (sortable == oldData){
+          return
+          }else{
+          oldData = sortable
+          }
+          if (sortable == null || sortable.length == 0){
+          //We have no scores
+                const newScore = document.createElement("p");
+                   
+                              newScore.innerHTML = "No scores available."
+                              console.log("there are none!");
+                               newScore.className = "placement"
+                              done = true;
+                               document.getElementsByClassName("placements")[0].appendChild(newScore);
+                             
+                        
+          }
           for (var i=0; i < sortable.length; i++){
                     var done = false;
                     console.log("working on: "+i)
@@ -115,11 +134,16 @@ console.log(sortable);
                     }
                    if (done === false){
                              done = true;
-                              newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
+                             if (sortable[i][1] < 0) {
+                                       newScore.innerHTML = "<span class=\"other\">[REMOVED]</span> "+sortable[i][0]+" - SCORE REMOVED"
+                             }else{
+                              newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" pts"
+                             }
                     newScore.className = "placement"
                     console.log("not first or second or third!");
                    document.getElementsByClassName("placements")[0].appendChild(newScore);
-                    
+                         
+                    newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                    }
                     
                     
@@ -127,10 +151,44 @@ console.log(sortable);
           
 });
                      }
+                     var CAT1 = document.getElementById("normal")
+                  
+                     var CAT2 = document.getElementById("turbine")
+                     var CAT3 = document.getElementById("chaos")
+                     
+                     
+                     CAT1.addEventListener('click',function(e){
+                     e.preventDefault();
+                               CAT = "normal"
+                               CAT1.className = "active"
+                               CAT3.className = "inactive"
+                               document.title = "Tunnel Glider - Normal Leaderboard"
+                               CAT2.className = "inactive"
+                               updateBoard();
+                     });
+                     CAT2.addEventListener('click',function(e){
+                     e.preventDefault();
+                               CAT = "turbine"
+                               CAT2.className = "active"
+                               CAT3.className = "inactive"
+                               document.title = "Tunnel Glider - Turbine Leaderboard"
+                               CAT1.className = "inactive"
+                               updateBoard();
+                     });
+                         CAT3.addEventListener('click',function(e){
+                     e.preventDefault();
+                               CAT = "chaos"
+                               CAT2.className = "inactive"
+                                   CAT3.className = "active"
+                               document.title = "Tunnel Glider - Chaos Leaderboard"
+                               CAT1.className = "inactive"
+                               updateBoard();
+                     });
+                     
 updateBoard();
 setInterval(function(){
 updateBoard();
-},10000);
+},30000);
                      
-</script>      
+</script>    
 </body>

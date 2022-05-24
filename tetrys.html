@@ -14,8 +14,9 @@
           
           <div class="leaderboard">
                     <div class="catergories">
-                              <button class="active">Pauseless</button>
-                              <!--<button class="inactive">Pauses</button>!-->
+                              <button id="pauseless" class="active">Pauseless</button>
+                              <button id="pause" class="inactive">Pauses</button>
+                              
                               </div>
                     <h1 style="color: white;">Tetrys</h1>
                     <div class="mods"><p class="moderators" style="color: white;">Leaderboard Moderator(s):</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Sean</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Noah</p><p style="color: white;"><span><img src="/static/badges/moderator.png" alt="supermod" class="mod"/></span> Enzo</p></div>
@@ -23,10 +24,11 @@
                     <button class="submit" onclick="location.href='https://forms.gle/zCXXvJF8WtBic1cJA';"><span><i class="fa-solid fa-plus"></i></span> Submit Score</button>
                     <div class="placements">
                               </div>
-                    <p class="extra">It may take up to 7 days for your score to be reviewed and approved. Board updates every 10s.</p>
+                    <p class="extra">It may take up to 7 days for your score to be reviewed and approved. Board updates every 30s.</p>
           </div>
            <script type="module">
                      var CAT = "pauseless"
+                     var oldData = [];
                      function addCommas(nStr)
 {
     nStr += '';
@@ -82,6 +84,11 @@ sortable.sort(function(a, b) {
 });
           sortable.reverse();
 console.log(sortable);
+          if (sortable == oldData){
+          return
+          }else{
+          oldData = sortable
+          }
           for (var i=0; i < sortable.length; i++){
                     var done = false;
                     console.log("working on: "+i)
@@ -92,6 +99,7 @@ console.log(sortable);
                                newScore.className = "placement"
                               done = true;
                                document.getElementsByClassName("placements")[0].appendChild(newScore);
+                              newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                              
                     }
                     if (i + 1 == 2){
@@ -101,7 +109,7 @@ console.log(sortable);
                               done = true;
                               
                                document.getElementsByClassName("placements")[0].appendChild(newScore);
-                              
+                     newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";         
                     }
                     if (i + 1 == 3){
                               newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" pts"
@@ -109,6 +117,7 @@ console.log(sortable);
                                newScore.className = "placement"
                               done = true;
                                document.getElementsByClassName("placements")[0].appendChild(newScore);
+                              newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                               
                     }
                    if (done === false){
@@ -121,7 +130,8 @@ console.log(sortable);
                     newScore.className = "placement"
                     console.log("not first or second or third!");
                    document.getElementsByClassName("placements")[0].appendChild(newScore);
-                    
+                         
+                    newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                    }
                     
                     
@@ -129,12 +139,32 @@ console.log(sortable);
           
 });
                      }
-                     var ELEMENT1 = document.getElementsByClassName("")
+                     var CAT1 = document.getElementById("pauseless")
+                     var TITLE = document.getElementsByClassName("title")
+                     var CAT2 = document.getElementById("pause")
+                     
+                     
+                     CAT1.addEventListener('click',function(e){
+                     e.preventDefault();
+                               CAT = "pauseless"
+                               CAT1.className = "active"
+                               document.title = "Tetrys - Pauseless Leaderboard"
+                               CAT2.className = "inactive"
+                               updateBoard();
+                     });
+                     CAT2.addEventListener('click',function(e){
+                     e.preventDefault();
+                               CAT = "paused"
+                               CAT2.className = "active"
+                               document.title = "Tetrys - Pauses Leaderboard"
+                               CAT1.className = "inactive"
+                               updateBoard();
+                     });
                      
 updateBoard();
 setInterval(function(){
 updateBoard();
-},10000);
+},30000);
                      
 </script>         
 </body>
