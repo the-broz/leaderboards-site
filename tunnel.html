@@ -113,7 +113,7 @@ console.log(sortable);
                                newScore.className = "placement"
                               done = true;
                                document.getElementsByClassName("placements")[0].appendChild(newScore);
-                             
+                              newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                     }
                     if (i + 1 == 2){
                               newScore.innerHTML = "[<span class=\"sec\">2nd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
@@ -122,7 +122,7 @@ console.log(sortable);
                               done = true;
                               
                                document.getElementsByClassName("placements")[0].appendChild(newScore);
-                              
+                               newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                     }
                     if (i + 1 == 3){
                               newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
@@ -130,7 +130,7 @@ console.log(sortable);
                                newScore.className = "placement"
                               done = true;
                                document.getElementsByClassName("placements")[0].appendChild(newScore);
-                              
+                           newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";    
                     }
                    if (done === false){
                              done = true;
