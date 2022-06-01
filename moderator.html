@@ -1,15 +1,91 @@
 <head>
 <title>Moderator Dashboard</title>
 <style>
+          .tooltip {
+  position: relative;
+  display: inline-block;
+ 
+}
 
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+          
+          body {
+          background-color: #4aa644;
+                    color: white
+          }
+          .runsWaiting {
+           background-color: #388732;
+                    width: 100%;
+                    height: 500px;;
+          }
+          p {
+                    background-color: #255721;
+                              height: 25px;
+                              text-align: left;
+                              vertical-align: center;
+                              border-radius: 3px;
+                              margin-top: 3px;
+                              margin-bottom: 10px;
+                              color: white;
+                    }
+          button {
+          width: 25px;
+                    height: 25px;
+                    position: flex;
+                    float: right;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+          }
+          .accept {
+          background-color:#3EF821;
+                    
+          }
+          .accept:hover {
+          background-color:#2cad18;
+                    
+          }
+          .deny {
+          background-color: #E82222;
+                    
+          }
+          .deny:hover {
+          background-color: #ab1818;
+                    
+          }
+          
 </style>
 </head>
 
 <body>
+          <h1>Moderator Panel V1</h1>
+          <h4>Welcome to the moderator panel! Here you can see all pending runs! Just click one and start reviewing and press deny or accept and it will instantly appear on the leaderboard!</h4>
+          <div class="runsWaiting">
+                    
+                    </div>
+          <script src="https://kit.fontawesome.com/6806c86bd3.js" crossorigin="anonymous"></script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-                     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+                     import { getDatabase, ref, onValue, remove, set } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
 
 
   // TODO: Add SDKs for Firebase products that you want to use
@@ -32,5 +108,113 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
                      const database = getDatabase();
+             let sortable = [];                     
+                    
+          const starCountRef = ref(database, 'pending');
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+           document.getElementsByClassName("runsWaiting")[0].innerHTML = ""
+     
+for (var score in data) {
+    sortable.push([score, data[score]]);
+}
+console.log(sortable);
+          for (var i = 0; i < sortable.length; i++){
+          const newScore = document.createElement("p");
+                    const newButton1 = document.createElement("button");
+                    newButton1.innerHTML = "✓"
+                    newButton1.name = sortable[i][0]
+                    newButton1.className = "accept"
+                    const newButton2 = document.createElement("button");
+                    newButton2.innerHTML = "X"
+                    newButton2.name = sortable[i][0]
+                     newButton2.className = "deny"
+                    var daString = ""
+                    daString += sortable[i][1].username
+                    if (sortable[i][1].game == "tetrys"){
+                        daString += ": Tetrys - "
+                              
+                              if (sortable[i][1].category == "tetrys_nopause"){
+                              daString += "Pauseless - "
+                              }
+                              if (sortable[i][1].category == "tetrys_pause"){
+                              daString += "Pauses - "
+                              }
+                              daString += sortable[i][1].score
+                              newScore.className = sortable[i][0];
+                                newScore.innerHTML = daString;
+                              console.log(daString)
+                        }
+                        
+                        //sortable[i][1].username+": "+sortable[i][1].game+" - "+sortable[i][1].category
+                    newButton1.addEventListener('click',function(){
+                              console.log('click verify')
+                              var oldData = sortable[i];
+           
+                                             newScore.remove()
+                              var cat = ""
+                            if (sortable[i][1].category == "tetrys_nopause"){
+                              cat = "pauseless"
+                              }
+                              if (sortable[i][1].category == "tetrys_pause"){
+                              cat = "pauses"
+                              }
+                                           remove(ref(database, 'pending/' + newButton1.name))
+               set(ref(database, 'games/' + sortable[i][1].game + '/' + cat + '/' + sortable[i][1].username), sortable[i][1].score);
+                              
+     });   
+                    newButton2.addEventListener('click',function(){
+                               console.log('click deny')
+                              newScore.remove()
+                                           document.getElementsByClassName("runsWaiting")[0].innerHTML = ""        
+                                              remove(ref(database, 'pending/' + newButton1.name))
+               
+     });   
+                                                
+                                               
+                  newScore.appendChild(newButton1);
+                    newScore.appendChild(newButton2);
+                    document.getElementsByClassName("runsWaiting")[0].appendChild(newScore);
+          }
+});
+    /* var accepts = document.getElementsByClassName("accept")
+     
+     
+               
+     accepts[i].addEventListener("click",function(){
+               console.log('click!')
+               var data = sortable[i][1]
+               let cat = undefined
+               if (data[i][1].category == "tetrys_nopause"){
+               cat = "pauseless"
+               }
+               if (data[i][1].category == "tetrys_pause"){
+               cat = "paused"
+               }
+               if (data[i][1].category == "tunnel_normal"){
+               cat = "normal"
+               }
+               if (data[i][1].category == "tunnel_turbine"){
+               cat = "turbine"
+               }
+                if (data[i][1].category == "tunnel_chaos"){
+               cat = "chaos"
+               }
+                if (data[i][1].category == "snake_def"){
+               cat = "extension"
+               }
+     set(ref(database, 'pending/' + accepts[i][0].name), remove());
+               set(ref(database, 'games/' + data[i][1].game + '/' + cat + '/' + data[i][1].username), data[i][1].score);
+     });
+     
+          var deny = document.getElementsByClassName("accept")
+     
+     for (var i = 0; i < deny.length; i++){
+               accepts[i].addEventListener("click",function(){
+     set(ref(database, 'pending/' + accepts[i][0].name), remove());
+     });
+    }
+        
+     */
 </script>
 </body>

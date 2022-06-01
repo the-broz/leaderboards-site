@@ -43,6 +43,20 @@ app.get('/game/cookieclicker', (req, res) => {
   res.sendFile(__dirname + '/cookie.html');
 });
 
+app.get('/v1/moderator', (req, res) => {
+           var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+          console.log('[GET] MODERATOR PAGE\nIP:'+ip);
+  res.sendFile(__dirname + '/moderator.html');
+});
+
+app.get('/v2/submit', (req, res) => {
+res.sendFile(__dirname + '/submit.html')
+});
+
+app.get('/v2/submit/:game', (req, res) => {
+res.sendFile(__dirname + '/submit.html')
+});
+
 app.get('/v2/game/:game', (req, res) => {
  res.send(req.params)
 });
