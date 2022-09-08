@@ -2,92 +2,7 @@
           <title>Games - Leaderboards</title>
           <style>
                     @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap');
-                    body {
-background-color: #4aa644;
-                              font-family: 'Work Sans', sans-serif;
-}
-                    .topnav {
-  background-color: #3d8a37;
-  overflow: hidden;
-                              width: 102%;
-                              position: relative;
-                              top: -12px;
-left: -7px;
-                                                
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-                    
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #59cc50;
-  color: white;
-}
-                    .topnav a.leftside {
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-                              float: right;
-}
-                    .topnav a.leftsideactive {
-  background-color: #59cc50;
-  color: white;
-}
-                    .page {
-                              display: flex;
-                    align-items: left;
-                    }
-.page div {
-          margin-left: 10px;
-          display: flex;
-          position: relative;
-width: 350px;
-          background-color: #3d8a37;
-          height: 200px;
-          border-radius: 10px;
-          cursor: pointer;
-          margin-top: 15px;
-          justify-content: center;
-}
-                    .page div h1 {
-                              position: absolute;
-                    bottom: 0px;
-                              font-size: 20px;
-                              color: white;
-                    }
-                    .page div:hover {
-          
-          animation: hover;
-                              animation-duration: .5s;
-           background-color: #59cc50;
-}
-                    
-               
-                    @keyframes hover {
-                              0% {
-                              background-color: #3d8a37;
-                              }
-                              
-                              100% {
-                              background-color: #59cc50;
-                              }
-                    }
+                    @import url('/static/css/index.css');
                     </style>
 </head>
 <body>
@@ -97,7 +12,9 @@ width: 350px;
           <a href="https://forms.gle/zCXXvJF8WtBic1cJA">Submit Score</a>
           <a class="leftside">Signup</a>
 </div>
-<div class="page">
+<h1 class="SectionTitle">Trending Games</h1>
+<div class="trending">
+
 <div class="tetrys" onclick="location.href='game/tetrys';">
 
 <img src="static/icon.png" alt="icon" class="icon"/>
@@ -116,11 +33,11 @@ width: 350px;
 
 <h1>Tunnel Glider</h1>
 </div>
-          <div class="cookies" onclick="location.href='game/cookieclicker';">
+          <div class="baseball" onclick="location.href='game/baseball';">
 
-<img src="static/cookie.jpg" alt="icon" />
+<img src="static/baseball.png" alt="icon" />
 
-<h1>Cookie Clicker</h1>
+<h1>Google Baseball</h1>
 </div>
 </div>
          

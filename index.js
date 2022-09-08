@@ -37,10 +37,10 @@ app.get('/game/tunnel', (req, res) => {
           console.log('[GET] Tunnel Glider\nIP:'+ip);
   res.sendFile(__dirname + '/tunnel.html');
 });
-app.get('/game/cookieclicker', (req, res) => {
+app.get('/game/baseball', (req, res) => {
            var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
-          console.log('[GET] Cookie Clicker\nIP:'+ip);
-  res.sendFile(__dirname + '/cookie.html');
+          console.log('[GET] Baseball\nIP:'+ip);
+  res.sendFile(__dirname + '/baseball.html');
 });
 
 app.get('/v1/moderator', (req, res) => {
