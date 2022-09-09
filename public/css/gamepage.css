@@ -79,11 +79,12 @@ left: -7px;
                     background-color: #05612a;
                               height: 25px;
                               text-align: left;
-                              vertical-align: center;
+                              vertical-align: bottom;
                               border-radius: 3px;
                               margin-top: 3px;
                               margin-bottom: 10px;
                               color: white;
+                              border-radius: 10px;
                     }
                     .extra {
                     font-size: 9px;
@@ -163,9 +164,11 @@ left: -7px;
 @keyframes scoreAdd {
           0% {
           margin-left: 100%;
+          opacity: 0;
           }
           100% {
           margin-left: 0%;
+          opacity: 1;
                     -webkit-animation-play-state: paused !important;
    -moz-animation-play-state: paused !important;
    -o-animation-play-state: paused !important; 
