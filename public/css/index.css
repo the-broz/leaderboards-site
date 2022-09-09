@@ -1,0 +1,91 @@
+body {
+    background-color: #0fbe55;
+                                  font-family: 'Work Sans', sans-serif;
+    }
+                        .topnav {
+      background-color: #08A045;
+      overflow: hidden;
+                                  width: 102%;
+                                  position: relative;
+                                  top: -12px;
+    left: -7px;
+                                                    
+    }
+    
+    /* Style the links inside the navigation bar */
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+                        
+    /* Change the color of links on hover */
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    /* Add a color to the active/current link */
+    .topnav a.active {
+      background-color: #355070;
+      color: white;
+    }
+                        .topnav a.leftside {
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+                                  float: right;
+    }
+                        .topnav a.leftsideactive {
+      background-color: #355070;
+      color: white;
+    }
+                        .trending {
+                                  display: flex;
+                        align-items: left;
+                        flex-wrap: wrap;
+                        }
+    .trending div {
+              margin-left: 10px;
+              display: flex;
+              position: relative;
+    width: 350px;
+              background-color: #08A045;
+              height: 200px;
+              border-radius: 10px;
+              cursor: pointer;
+              margin-top: 15px;
+              justify-content: center;
+    }
+                        .trending div h1 {
+                                  position: absolute;
+                        bottom: 0px;
+                                  font-size: 20px;
+                                  color: white;
+                        }
+                        .trending div:hover {
+              
+              animation: hover;
+                                  animation-duration: .5s;
+               background-color: #355070;
+    }
+    
+    .SectionTitle {
+      color: aliceblue;
+    }
+                        
+                   
+                        @keyframes hover {
+                                  0% {
+                                  background-color: #08A045;
+                                  }
+                                  
+                                  100% {
+                                  background-color: #355070;
+                                  }
+                        }

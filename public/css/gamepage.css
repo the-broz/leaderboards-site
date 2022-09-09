@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap');
-                    html, body { background-color: #4aa644; font-family: 'Work Sans', sans-serif;}
+                    html, body { background-color: #0fbe55; font-family: 'Work Sans', sans-serif;}
                                         .topnav {
-  background-color: #3d8a37;
+  background-color: #08A045;
   overflow: hidden;
                               width: 102%;
                               position: relative;
@@ -28,7 +28,7 @@ left: -7px;
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #59cc50;
+  background-color: #355070;
   color: white;
 }
         
@@ -66,7 +66,7 @@ left: -7px;
                     align-items: center;
                                margin-top: 3%;
                               margin-right: auto; margin-left: auto; width: 1200px; height: 500px;
-                              background-color:#388732
+                              background-color:#067a35
                                         
                     }
                     .placements {
@@ -76,14 +76,15 @@ left: -7px;
                               overflow-x: hidden;
                     }
                     .placement {
-                    background-color: #255721;
+                    background-color: #05612a;
                               height: 25px;
                               text-align: left;
-                              vertical-align: center;
+                              vertical-align: bottom;
                               border-radius: 3px;
                               margin-top: 3px;
                               margin-bottom: 10px;
                               color: white;
+                              border-radius: 10px;
                     }
                     .extra {
                     font-size: 9px;
@@ -98,7 +99,7 @@ left: -7px;
                               margin-bottom: 10px;
                               width: 105px;
                               height: 30px;
-                              background-color: #255721;
+                              background-color: #08A045;
                               color: white;
                               border: none;
                               border-radius: 10px;
@@ -110,7 +111,7 @@ left: -7px;
                               margin-bottom: 10px;
                               width: 105px;
                               height: 30px;
-                              background-color: #59cc50;
+                              background-color: #355070;
                               color: white;
                               border: none;
                               border-radius: 10px;
@@ -125,7 +126,7 @@ left: -7px;
                               top: 105;
                               width: 115px;
                               height: 40px;
-                              background-color: #255721;
+                              background-color: #08A045;
                               color: white;
                               border: none;
                               border-radius: 10px;
@@ -136,36 +137,38 @@ left: -7px;
                     .inactive:hover {
                     animation: hover;
                               animation-duration: 1s;
-                              background-color: #59cc50;
+                              background-color: #355070;
                               
                     }
                     
                     .submit:hover {
                     animation: hover;
                               animation-duration: 1s;
-                              background-color: #59cc50;
+                              background-color: #355070;
                               
                     }
                     .mods {
                               z-index: 1;
                     margin-bottom: 10px;
-                              background-color: #255721;
+                              background-color: #05612a;
                     }
                     @keyframes hover {
                               0% {
-                              background-color: #255721;
+                              background-color: #08A045;
                               }
                               
                               100% {
-                              background-color: #59cc50;
+                              background-color: #355070;
                               }
                     }
 @keyframes scoreAdd {
           0% {
           margin-left: 100%;
+          opacity: 0;
           }
           100% {
           margin-left: 0%;
+          opacity: 1;
                     -webkit-animation-play-state: paused !important;
    -moz-animation-play-state: paused !important;
    -o-animation-play-state: paused !important; 
