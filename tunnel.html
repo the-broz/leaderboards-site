@@ -48,7 +48,7 @@
     if (start === end) return;
     var range = end - start;
     var current = start;
-    var increment = end > start? 1 : -1;
+    var increment = end > start? .5 : -1;
     var stepTime = Math.abs(Math.floor(duration / range));
     var obj = id;
     var timer = setInterval(function() {
@@ -162,7 +162,7 @@ console.log(sortable);
                               newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                     }
                     if (i  == 2){
-                              newScore.innerHTML = "[<span class=\"sec\">2nd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" runs"
+                              newScore.innerHTML = "[<span class=\"sec\">2nd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
                               console.log("is sec!");
                                newScore.className = "placement"
                               done = true;
@@ -171,7 +171,7 @@ console.log(sortable);
                                newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i-1)+"s; animation-iteration-count: 1;";
                     }
                     if (i  == 3){
-                              newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" runs"
+                              newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
                               console.log("is third!");
                                newScore.className = "placement"
                               done = true;
@@ -180,18 +180,18 @@ console.log(sortable);
                     }
 
                     if (done == false){
-                      newScore.innerHTML = "<span class=\"other\">["+(i - 1)+"th]</span> "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" runs"
+                      newScore.innerHTML = "<span class=\"other\">["+(i - 1)+"th]</span> "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" km"
                     }
                              }else{
                               if (done == false){
-                                newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i-1][0]+" - "+addCommas(sortable[i-1][1])+" runs"
+                                newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i-1][0]+" - "+addCommas(sortable[i-1][1])+" km"
                               }
                              
                              }
                             }else{
                               console.log("undefined")
                               if (done == false){
-                                newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i-1][0]+" - "+addCommas(sortable[i-1][1])+" runs"
+                                newScore.innerHTML = "<span class=\"other\">["+(i + 1)+"th]</span> "+sortable[i-1][0]+" - "+addCommas(sortable[i-1][1])+" km"
                               }
                              }
                     newScore.className = "placement"
