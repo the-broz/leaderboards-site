@@ -53,6 +53,18 @@ app.get('/v2/submit', (req, res) => {
 res.sendFile(__dirname + '/submit.html')
 });
 
+app.get('/v2/login', (req, res) => {
+  res.sendFile(__dirname + '/login.html')
+  });
+
+app.get('/user/:name', (req, res) => {
+    res.sendFile(__dirname + '/login.html')
+  });
+
+app.get('/404', (req, res) => {
+      res.sendFile(__dirname + '/404.html')
+  });
+
 app.get('/v2/submit/:game', (req, res) => {
 res.sendFile(__dirname + '/submit.html')
 });
