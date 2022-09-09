@@ -51,9 +51,9 @@
     var obj = id;
     var timer = setInterval(function() {
         current += increment;
-      obj.innerHTML = "[<span class=\"first\">1st</span>] "+name+" - "+addCommas(current)+" pts"
+      obj.innerHTML = "[<span class=\"first\"><img src=\"/static/leaderboard/first.png\"alt=\"1st\"></span>] "+name+" - "+addCommas(current)+" pts"
         if (current >= end) {
-                  obj.innerHTML = "[<span class=\"first\">1st</span>] "+name+" - "+addCommas(end)+" pts"
+                  obj.innerHTML = "[<span class=\"first\"><img src=\"/static/leaderboard/first.png\" alt=\"1st\"></span>] "+name+" - "+addCommas(end)+" pts"
             clearInterval(timer);
         }
     }, 0);
@@ -121,7 +121,7 @@ console.log(sortable);
                               newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                     }
                     if (i + 1 == 2){
-                              newScore.innerHTML = "[<span class=\"sec\">2nd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" pts"
+                              newScore.innerHTML = "[<span class=\"sec\"><img src=\"/static/leaderboard/sec.png\" alt=\"2nd\"></span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" pts"
                               console.log("is sec!");
                                newScore.className = "placement"
                               done = true;
@@ -130,7 +130,7 @@ console.log(sortable);
                                newScore.style = "animation: scoreAdd; animation-duration: "+(.5+i)+"s; animation-iteration-count: 1;";
                     }
                     if (i + 1 == 3){
-                              newScore.innerHTML = "[<span class=\"third\">3rd</span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" pts"
+                              newScore.innerHTML = "[<span class=\"third\"><img src=\"/static/leaderboard/third.png\" alt=\"3rd\"></span>] "+sortable[i][0]+" - "+addCommas(sortable[i][1])+" pts"
                               console.log("is third!");
                                newScore.className = "placement"
                               done = true;
